@@ -1,15 +1,19 @@
 #! usr/local/bin/python
-from os.path import abspath, dirname, join
+# -*- coding: utf-8 -*-
+"""
+These scripts implement the Clustering Techniques module of the Coursera
+course `Strategic Business Analytics` in Python's Pandas package for data
+analysis. These scripts were originally written in the R programming language.
+"""
+from __future__ import unicode_literals
+
+from analytics_scripts import SBA_FILE_LOADER
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd 
 
-# let's define a helper function that will build a shortcut for our filepaths
-SBA_FILE = lambda *path: join(abspath('/Users/joshmaccabee/Projects/' \
-    'strategic_business_analytics/fixtures'), *path)
-
 ###############################################
-# now let's begin the analysis for the course #
+# let's begin the analysis for the course     #
 # instead of R, we'll use Python's Pandas pkg #
 # for our analysis and matplotlib for graphs  #
 ###############################################
@@ -18,7 +22,7 @@ SBA_FILE = lambda *path: join(abspath('/Users/joshmaccabee/Projects/' \
 # coefficient of variations of the sales in the SKU dataset (DATA_2.01_SKU.csv)
 
 # in order to do this, let's load the data into memory
-sku_df = pd.read_csv(SBA_FILE('DATA_2.01_SKU.csv'))
+sku_df = pd.read_csv(SBA_FILE_LOADER('DATA_2.01_SKU.csv'))
 
 # and then calculate the mean and median of the CV field of sku_df
 cv_mean = sku_df['CV'].mean()
@@ -26,7 +30,7 @@ cv_med = sku_df['CV'].median()
 print "Mean of CV: {}\nMedian of CV: {}".format(cv_mean, cv_med)
 
 # second, we are asked to do a hierarchical clustering on scaled data using an
-# Euclidian distance and Ward.D clustering on the SKU dataset. What are the 
+# Euclidian distance and Ward.D clustering on the SKU dataset. What are the
 # resulting segments if we decide to take only 2 clusters instead of 3?
 # NOTE: "Crickets" are low volatility, low value SKUs
 # NOTE: "Wild Bulls" are high volatility, high value SKUs
@@ -34,10 +38,12 @@ print "Mean of CV: {}\nMedian of CV: {}".format(cv_mean, cv_med)
 
 # since we're implementing in Pandas rather than R, let's first define some
 # helper functions to help us do some of the work built in to R
+
+
 def scale(df, center=True, scale=True):
-    """ 
+    """
     A helper function to normalize data in a pandas DataFrame. Standard in R.
-    
+
     PER THE R DOCUMENTATION:
     If 'scale' is True, then scaling is done by dividing the centered columns
     of 'x' by their standard deviations if 'center' is True, and the root mean
@@ -57,7 +63,7 @@ def scale(df, center=True, scale=True):
         x /= x.std()  # let's divide each element of x by the std dev of x
     elif scale:  # if only scale is True,
         # let's take the root mean square of x
-        x /= np.sqrt(x.pow(2).sum().div(x.count() - 1)) 
+        x /= np.sqrt(x.pow(2).sum().div(x.count() - 1))
     return x
 
 sku_df_scaled = scale(sku_df)

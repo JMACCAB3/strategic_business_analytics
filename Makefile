@@ -10,6 +10,7 @@ setup:
 
 	@echo "Installing dependencies..."; \
 	pip install --quiet -r requirements.txt; \
+	pre-commit install; \
 	echo "Install complete!";
 	
 clean:
