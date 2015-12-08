@@ -6,7 +6,7 @@ import pandas as pd
 
 # let's define a helper function that will build a shortcut for our filepaths
 SBA_FILE = lambda *path: join(abspath('/Users/joshmaccabee/Projects/' \
-    'strategic_business_analytics'), *path)
+    'strategic_business_analytics/fixtures'), *path)
 
 ###############################################
 # now let's begin the analysis for the course #
