@@ -6,11 +6,11 @@ course `Strategic Business Analytics` in Python's Pandas package for data
 analysis. The scripts were originally intended for the R programming language.
 """
 from __future__ import unicode_literals
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.cluster import AgglomerativeClustering
 
+from analytics_scripts import plt
 from analytics_scripts import SBA_FILE_LOADER
 
 

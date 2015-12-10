@@ -4,6 +4,16 @@ from __future__ import unicode_literals
 
 from os.path import abspath, join
 
+import matplotlib
+
+
+# let's configure matplotlib's settings
+# we have to call matplotlib.use() before we import matplotlib.pyplot
+matplotlib.use('TkAgg')
+
+# now let's import matplotlib.pyplot
+import matplotlib.pyplot
+plt = matplotlib.pyplot
 
 # let's define a helper function that will build a shortcut for our filepaths
 SBA_FILE_LOADER = lambda *path: join(abspath('/Users/joshmaccabee/Projects/'
