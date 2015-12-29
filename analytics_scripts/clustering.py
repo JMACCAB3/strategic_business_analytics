@@ -18,7 +18,7 @@ from analytics_scripts import SBA_FILE_LOADER
 # coefficient of variations of the sales in the SKU dataset (DATA_2.01_SKU.csv)
 
 # in order to do this, let's load the data into memory
-sku_df = pd.read_csv(SBA_FILE_LOADER('DATA_2.01_SKU.csv'))
+sku_df = pd.read_csv(SBA_FILE_LOADER('clustering/DATA_2.01_SKU.csv'))
 
 # and then calculate the mean and median of the CV field of sku_df
 cv_mean = sku_df['CV'].mean()
@@ -85,7 +85,7 @@ plt.show()
 # evaluation as a function of the number of projects done for the HR dataset
 
 # in order to do this, let's load the data into memory
-hr_df = pd.read_csv(SBA_FILE_LOADER('DATA_2.02_HR.csv'))
+hr_df = pd.read_csv(SBA_FILE_LOADER('clustering/DATA_2.02_HR.csv'))
 
 # then let's plot the data with CV on the x_axis and ADS on the y_axis
 plt.scatter(hr_df['LPE'], hr_df['NP'], s=100)
